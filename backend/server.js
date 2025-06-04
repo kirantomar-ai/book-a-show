@@ -9,7 +9,7 @@ const authRoutes = require("./routes/auth");
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
+app.use(express.static(path.join(__dirname, '..', 'frontend1', 'build')));
 
 app.use("/api/movies", movieRoutes);
 app.use("/api/auth", authRoutes);
@@ -20,7 +20,7 @@ app.use("/api/cities", require("./routes/cities"));
 // // Catch-all to serve React's index.html for any other route
 app.use(['/', '/book', '/movies', '/my-bookings'], (req, res) => {
   if (!req.path.startsWith('/api')) {
-    res.sendFile(path.join(__dirname, '..', 'frontend', 'build', 'index.html'));
+    res.sendFile(path.join(__dirname, '..', 'frontend1', 'build', 'index.html'));
   } else {
     res.status(404).json({ error: 'API route not found' });
   }
